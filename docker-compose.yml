@@ -99,7 +99,9 @@ services:
         fi
         exec /usr/local/searxng/entrypoint.sh
     ports:
-      - "127.0.0.1:8080:8080"
+      # JARVIS: host 8080 ocupado por AgentService → publicado en 8085.
+      # El puerto interno sigue 8080; Odysseus llega por la red interna (searxng:8080).
+      - "127.0.0.1:8085:8080"
     volumes:
       - searxng-data:/etc/searxng
       - ./config/searxng/settings.yml:/tmp/searxng-settings.yml.template:ro,z
